@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Screening System</title>
+</head>
+
+<body>
+
+    <h1>Resume Screening System</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <h3>Upload Resume</h3>
+
+        <input
+            type="file"
+            name="resume"
+            accept=".pdf,.doc,.docx"
+            required
+        >
+
+        <br><br>
+
+        <h3>Enter Job Description</h3>
+
+        <textarea
+            name="jd"
+            rows="8"
+            cols="60"
+            placeholder="Enter Job Description here..."
+            required
+        ></textarea>
+
+        <br><br>
+
+        <button type="submit">
+            Analyze Resume
+        </button>
+
+    </form>
+
+    {% if error %}
+
+        <h3>Error: {{ error }}</h3>
+
+    {% endif %}
+
+    {% if result %}
+
+        <hr>
+
+        <h2>Analysis Results</h2>
+
+        <h3>Resume Skills</h3>
+
+        <p>{{ result.skills | join(', ') }}</p>
+
+        <h3>Job Description Skills</h3>
+
+        <p>{{ result.jd_skills | join(', ') }}</p>
+
+        <h3>Matched Skills</h3>
+
+        <p>{{ result.matched_skills | join(', ') }}</p>
+
+        <h3>Matching Score</h3>
+
+        <h2>{{ result.score }} / 100</h2>
+
+        <h3>Final Decision</h3>
+
+        <h2>{{ result.decision | upper }}</h2>
+
+    {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+flask
+langchain-groq
+langgraph
+langchain-community
+pypdf
+python-docx
+gunicorn
+python-dotenv
